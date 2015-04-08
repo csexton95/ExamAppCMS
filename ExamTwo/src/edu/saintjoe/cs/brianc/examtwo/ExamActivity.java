@@ -23,23 +23,23 @@ public class ExamActivity extends Form implements HandlesEventDispatching {
 	private TextBox inputBox;
 	private Label outputLabel;
 	int temp;
-	
+	// makes all of the buttons, labels, and textboxes, a private instance so only certain people can change it
 
  void $define() {
  	
      this.BackgroundColor(COLOR_WHITE);
-     
+     // makes background color white
      line1 = new HorizontalArrangement(this);
      line2 = new HorizontalArrangement(this);
      line3 = new HorizontalArrangement(this);
      line4 = new HorizontalArrangement(this);
-
+     // shows 
      
      promptLabel = new Label(line1, "Enter a number:");
      inputBox = new TextBox(line1);
      inputBox.NumbersOnly(true);
-   
-     incButton = new Button(line2,"Increment it:"); 
+     // makes only numbers albe to be input in the input box
+     incButton = new Button(line2,"Double it:"); 
      
      resultLabel = new Label(line3,"");
      
@@ -48,21 +48,5 @@ public class ExamActivity extends Form implements HandlesEventDispatching {
      EventDispatcher.registerEventForDelegation(this, "ButtonClick", "Click");
     
  } 
- @Override
- public boolean dispatchEvent(Component component, String id, String eventName,
-         Object[] args) {
- 	
-	    if (component.equals(incButton) && eventName.equals("Click")){
-	    	temp = Integer.parseInt(inputBox.Text());
-	    	temp += 1;
-	    	resultLabel.Text(String.valueOf(temp));
-	        return true;
-	     } 
-	    
-	    if (component.equals(resultLabel) && eventName.equals("Click")) {
-	    	outputLabel.Text("You pushed me!!");
-	    	return true;
-	    }
-    return true;
-	} 
+
 } 
